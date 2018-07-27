@@ -113,6 +113,33 @@ describe "Poker Hand Spec" do
       end
     end
 
+    describe "#straight?" do
+      it "should return true if all suites are the same" do
+        cards = [double("card", value: "4", suite: "C"),
+                 double("card", value: "5", suite: "D"),
+                 double("card", value: "6", suite: "A"),
+                 double("card", value: "7", suite: "C"),
+                 double("card", value: "8", suite: "S")]
+
+        poker_hand = PokerHand.new(cards)
+
+        expect(poker_hand.straight?).to eq(true)
+      end
+    end
+
+    describe "#straight_flush?" do
+      it "should return true if all suites are the same" do
+        cards = [double("card", value: "4", suite: "C"),
+                 double("card", value: "5", suite: "C"),
+                 double("card", value: "6", suite: "C"),
+                 double("card", value: "7", suite: "C"),
+                 double("card", value: "8", suite: "C")]
+
+        poker_hand = PokerHand.new(cards)
+
+        expect(poker_hand.straight_flush?).to eq(true)
+      end
+    end
     end
   end
 end
