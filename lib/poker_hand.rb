@@ -15,4 +15,11 @@ class PokerHand
     end
   end
 
+  def kinds(comparable_count)
+    kinds = check_repeating_values.select do |value, count|
+      count == comparable_count
+    end
+    kinds
+  end
+
 end
