@@ -1,4 +1,5 @@
 require_relative "card"
+require 'pry'
 
 class PokerHand
 
