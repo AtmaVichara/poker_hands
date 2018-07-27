@@ -1,6 +1,6 @@
 require "rspec"
-require "../lib/poker_hand"
-require "../lib/card"
+require "./lib/poker_hand"
+require "./lib/card"
 
 describe "Poker Hand Spec" do
   describe "Attributes" do
