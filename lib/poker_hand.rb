@@ -22,4 +22,20 @@ class PokerHand
     kinds
   end
 
+  def pair?
+    kinds(2).length == 1
+  end
+
+  def two_pair?
+    kinds(2).length == 2
+  end
+
+  def three_of_a_kind?
+    kinds(3).length == 1
+  end
+
+  def four_of_a_kind?
+    kinds(4).length == 1
+  end
+
 end
