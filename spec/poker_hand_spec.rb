@@ -140,6 +140,22 @@ describe "Poker Hand Spec" do
         expect(poker_hand.straight_flush?).to eq(true)
       end
     end
+
+    describe "#royal_flush?" do
+      it "returns true if hand represents a royal flush" do
+        cards = [double("card", value: "13", suite: "C"),
+                 double("card", value: "14", suite: "C"),
+                 double("card", value: "11", suite: "C"),
+                 double("card", value: "12", suite: "C"),
+                 double("card", value: "10", suite: "C")]
+
+        poker_hand = PokerHand.new(cards)
+
+        expect(poker_hand.royal_flush?).to eq(true)
+      end
+    end
+
+    describe "#top_card" do
     end
   end
 end
