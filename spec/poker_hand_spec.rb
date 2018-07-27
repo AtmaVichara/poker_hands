@@ -156,6 +156,77 @@ describe "Poker Hand Spec" do
     end
 
     describe "#top_card" do
+      it "returns the value of the card with the highest value" do
+        cards = [double("card", value: "13", suite: "C"),
+                 double("card", value: "14", suite: "C"),
+                 double("card", value: "11", suite: "C"),
+                 double("card", value: "12", suite: "C"),
+                 double("card", value: "10", suite: "C")]
+
+        poker_hand = PokerHand.new(cards)
+
+        expect(poker_hand.top_card).to eq("14")
+      end
+    end
+
+    describe "#score_hand" do
+      it "should evaluate the hand and assign a score" do
+        cards = [double("card", value: "4", suite: "C"),
+                 double("card", value: "5", suite: "D"),
+                 double("card", value: "7", suite: "A"),
+                 double("card", value: "8", suite: "C"),
+                 double("card", value: "6", suite: "S")]
+
+        poker_hand = PokerHand.new(cards)
+        poker_hand.score_hand
+
+        expect(poker_hand.score).to eq(5)
+
+        new_cards = [double("card", value: "2", suite: "C"),
+                     double("card", value: "2", suite: "D"),
+                     double("card", value: "6", suite: "A"),
+                     double("card", value: "3", suite: "C"),
+                     double("card", value: "3", suite: "S")]
+
+        second_poker_hand = PokerHand.new(new_cards)
+        second_poker_hand.score_hand
+
+        expect(second_poker_hand.score).to eq(3)
+
+        third_cards = [double("card", value: "2", suite: "C"),
+                       double("card", value: "2", suite: "D"),
+                       double("card", value: "3", suite: "A"),
+                       double("card", value: "3", suite: "C"),
+                       double("card", value: "3", suite: "S")]
+
+        third_poker_hand = PokerHand.new(third_cards)
+        third_poker_hand.score_hand
+
+        expect(third_poker_hand.score).to eq(7)
+
+        straight_flush_cards = [double("card", value: "4", suite: "C"),
+                               double("card", value: "3", suite: "C"),
+                               double("card", value: "2", suite: "C"),
+                               double("card", value: "5", suite: "C"),
+                               double("card", value: "6", suite: "C")]
+
+        straight_flush_hand = PokerHand.new(straight_flush_cards)
+        straight_flush_hand.score_hand
+
+        expect(straight_flush_hand.score).to eq(11)
+
+
+        royal_flush_cards = [double("card", value: "13", suite: "C"),
+                             double("card", value: "14", suite: "C"),
+                             double("card", value: "11", suite: "C"),
+                             double("card", value: "12", suite: "C"),
+                             double("card", value: "10", suite: "C")]
+
+        royal_poker_hand = PokerHand.new(royal_flush_cards)
+        royal_poker_hand.score_hand
+
+        expect(royal_poker_hand.score).to eq(12)
+      end
     end
   end
 end
