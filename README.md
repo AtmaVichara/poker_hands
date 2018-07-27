@@ -5,4 +5,4 @@ This is an attempt at the Euler Poker Hands challenge written in Ruby.
 This challenge has a fully functional testing suite utilizing Rspec.
 
 ## Solution Screenshot
-![alt text][solution_screenshot.png]
+![alt text](solution_screenshot.png)
