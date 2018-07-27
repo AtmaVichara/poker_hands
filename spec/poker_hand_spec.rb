@@ -29,6 +29,20 @@ describe "Poker Hand Spec" do
       end
     end
 
+    describe "#kinds" do
+      it "returns hash of all the values and their counts" do
+        cards = [double("card", value: "4", suite: "C"),
+                 double("card", value: "4", suite: "D"),
+                 double("card", value: "2", suite: "C"),
+                 double("card", value: "6", suite: "A"),
+                 double("card", value: "K", suite: "D")]
+
+        poker_hand = PokerHand.new(cards)
+
+        expect(poker_hand.kinds(2)).to eq({"4" => 2})
+      end
+    end
+
     end
   end
 end
