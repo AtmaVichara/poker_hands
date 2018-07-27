@@ -6,6 +6,7 @@ if __FILE__ == $0
   player_one_wins = 0
   reader = File.open('data/poker.txt', 'r')
   reader.each_line do |line|
+
     line.strip!
     mid = line.length / 2
 
@@ -18,6 +19,7 @@ if __FILE__ == $0
     player_one_hand.score_hand
     player_two_hand.score_hand
 
+    # if the scores are equal then check for the top most card
     if player_one_hand.score > player_two_hand.score
       player_one_wins += 1
     elsif player_one_hand.score == player_two_hand.score
