@@ -52,4 +52,8 @@ class PokerHand
     flush? && straight? ? true : false
   end
 
+  def royal_flush?
+    straight_flush? && hand.any? { |card| card.value == "14"}
+  end
+
 end
