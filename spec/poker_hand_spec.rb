@@ -43,6 +43,61 @@ describe "Poker Hand Spec" do
       end
     end
 
+    describe "#pair?" do
+      it "returns true if there is a pair of values in the hand" do
+        cards = [double("card", value: "4", suite: "C"),
+                 double("card", value: "4", suite: "D"),
+                 double("card", value: "2", suite: "C"),
+                 double("card", value: "6", suite: "A"),
+                 double("card", value: "K", suite: "D")]
+
+        poker_hand = PokerHand.new(cards)
+
+        expect(poker_hand.pair?).to eq(true)
+      end
+    end
+
+    describe "#two_pair?" do
+      it "returns true if there are two pairs of values in the hand" do
+        cards = [double("card", value: "2", suite: "C"),
+                 double("card", value: "2", suite: "D"),
+                 double("card", value: "6", suite: "A"),
+                 double("card", value: "3", suite: "C"),
+                 double("card", value: "3", suite: "S")]
+
+        poker_hand = PokerHand.new(cards)
+
+        expect(poker_hand.two_pair?).to eq(true)
+      end
+    end
+
+    describe "#three_of_a_kind?" do
+      it "returns true if there is a three of the same values in the hand" do
+        cards = [double("card", value: "4", suite: "C"),
+                 double("card", value: "4", suite: "D"),
+                 double("card", value: "2", suite: "C"),
+                 double("card", value: "4", suite: "A"),
+                 double("card", value: "3", suite: "D")]
+
+        poker_hand = PokerHand.new(cards)
+
+        expect(poker_hand.three_of_a_kind?).to eq(true)
+      end
+    end
+
+    describe "#four_of_a_kind?" do
+      it "returns true if there is four of the same values in the hand" do
+        cards = [double("card", value: "4", suite: "C"),
+                 double("card", value: "4", suite: "D"),
+                 double("card", value: "4", suite: "S"),
+                 double("card", value: "4", suite: "A"),
+                 double("card", value: "3", suite: "D")]
+
+        poker_hand = PokerHand.new(cards)
+
+        expect(poker_hand.four_of_a_kind?).to eq(true)
+      end
+    end
     end
   end
 end
