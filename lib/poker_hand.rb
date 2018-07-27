@@ -43,4 +43,13 @@ class PokerHand
     hand.all? { |card| card.suite == suite}
   end
 
+  def straight?
+    holder_hand = hand.sort_by { |card| card.value}
+    holder_hand.each_cons(2).all? { |first_card, comparable_card| comparable_card.value == first_card.value.next}
+  end
+
+  def straight_flush?
+    flush? && straight? ? true : false
+  end
+
 end
