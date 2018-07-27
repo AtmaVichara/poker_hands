@@ -98,6 +98,21 @@ describe "Poker Hand Spec" do
         expect(poker_hand.four_of_a_kind?).to eq(true)
       end
     end
+
+    describe "#flush?" do
+      it "should return true if all suites are the same" do
+        cards = [double("card", value: "4", suite: "C"),
+                 double("card", value: "5", suite: "C"),
+                 double("card", value: "2", suite: "C"),
+                 double("card", value: "6", suite: "C"),
+                 double("card", value: "K", suite: "C")]
+
+        poker_hand = PokerHand.new(cards)
+
+        expect(poker_hand.flush?).to eq(true)
+      end
+    end
+
     end
   end
 end
