@@ -56,4 +56,21 @@ class PokerHand
     straight_flush? && hand.any? { |card| card.value == "14"}
   end
 
+  def top_card
+    holder_hand = hand.sort_by { |card| card.value }
+    holder_hand.last.value
+  end
+
+  def score_hand
+    final_score = 0
+    final_score += 2 if pair?
+    final_score += 3 if two_pair?
+    final_score += 4 if three_of_a_kind?
+    final_score += 5 if straight?
+    final_score += 6 if flush?
+    final_score += 1 if pair? && three_of_a_kind?
+    final_score += 8 if four_of_a_kind?
+    final_score += 1 if royal_flush?
+    @score = final_score
+  end
 end
