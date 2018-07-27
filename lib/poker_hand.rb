@@ -38,4 +38,9 @@ class PokerHand
     kinds(4).length == 1
   end
 
+  def flush?
+    suite = hand.first.suite
+    hand.all? { |card| card.suite == suite}
+  end
+
 end
